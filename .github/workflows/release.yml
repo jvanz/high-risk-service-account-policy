@@ -11,7 +11,7 @@ name: Release policy
 jobs:
   test:
     name: run tests and linters
-    uses: kubewarden/github-actions/.github/workflows/reusable-test-policy-rust.yml@v4.5.1
+    uses: jvanz/github-actions/.github/workflows/reusable-test-policy-rust.yml@replace-sbom-generator-tool
 
   release:
     needs: test
@@ -23,6 +23,6 @@ jobs:
       # Required by cosign keyless signing
       id-token: write
 
-    uses: kubewarden/github-actions/.github/workflows/reusable-release-policy-rust.yml@v4.5.1
+    uses: jvanz/github-actions/.github/workflows/reusable-release-policy-rust.yml@replace-sbom-generator-tool
     with:
       oci-target: ghcr.io/kubewarden/policies/high-risk-service-account-policy
